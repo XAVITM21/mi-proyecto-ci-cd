@@ -12,20 +12,26 @@ jobs:
 
     strategy:
       matrix:
-        
         node-version: [18.x, 20.x] 
 
     steps:
     - uses: actions/checkout@v4
     
-    # 🌟 PASO CRÍTICO: Configura el entorno de Node.js
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         
+    - name: Cache Node Modules
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
     - name: Instalar dependencias
-      run: npm install
+      run: npm install 
     
     - name: Ejecutar pruebas
-      run: npm test
+      run: npx jest
