@@ -3,88 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AldoShop | eCommerce Pro</title>
+    <title>AldoShop | Tienda</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
-        body { background-color: #f4f4f4; padding-top: 120px; } /* Espacio para el header fijo */
-        
-        /* Header y Búsqueda */
+        body { background-color: #f4f4f4; padding-top: 120px; }
         header { background: #232f3e; color: white; padding: 1rem; position: fixed; top: 0; width: 100%; z-index: 1000; }
         .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
         .search-bar { flex-grow: 1; display: flex; }
         .search-bar input { width: 100%; padding: 8px; border-radius: 4px 0 0 4px; border: none; }
         .search-bar button { padding: 8px 15px; background: #febd69; border: none; border-radius: 0 4px 4px 0; cursor: pointer; }
-        
-        /* Carrito en la esquina derecha */
-        .cart-link { color: white; text-decoration: none; font-weight: bold; position: relative; display: flex; align-items: center; gap: 5px; }
-        .cart-icon { font-size: 1.5rem; }
-
+        .cart-link { color: white; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 5px; }
         nav { background: #37475a; padding: 10px; display: flex; justify-content: center; gap: 20px; position: fixed; top: 75px; width: 100%; z-index: 999; }
         nav a { color: white; text-decoration: none; font-size: 0.9rem; }
-
         .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .product-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
         .product-card img { width: 100%; height: 220px; object-fit: contain; margin-bottom: 15px; }
         .price { color: #B12704; font-size: 1.3rem; font-weight: bold; margin: 10px 0; }
-        
-        .btn-buy { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 10px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
-        .btn-buy:hover { background: #f7ca00; }
-
-        footer { text-align: center; padding: 20px; color: #666; font-size: 0.8rem; margin-top: 40px; }
+        .btn-buy { background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: 10px; cursor: pointer; font-weight: bold; width: 100%; }
     </style>
 </head>
 <body>
     <header>
         <div class="header-container">
             <h1 style="font-size: 1.5rem;">AldoShop</h1>
-            
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar productos...">
-                <button>🔍</button>
-            </div>
-
-            <a href="#" class="cart-link" onclick="alert('Tu carrito está vacío actualmente')">
-                <span class="cart-icon">🛒</span> Carrito
-            </a>
+            <div class="search-bar"><input type="text" placeholder="Buscar..."><button>🔍</button></div>
+            <a href="carrito.html" target="_blank" class="cart-link">🛒 Ver Carrito</a>
         </div>
     </header>
-
-    <nav>
-        <a href="#">Electrónica</a> <a href="#">Moda</a> <a href="#">Hogar</a> <a href="#">Ofertas</a>
-    </nav>
-
+    <nav><a href="#">Electrónica</a><a href="#">Moda</a><a href="#">Hogar</a></nav>
     <div class="container">
         <h2>Productos Destacados</h2><br>
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://m.media-amazon.com/images/I/71ZOtNdaZCL._AC_SL1500_.jpg" alt="Celular">
-                <h3>Iphone 13 Pro</h3>
-                <p class="price">$1,299.00</p>
-                <button class="btn-buy" onclick="mostrarMensaje()">Añadir al carrito</button>
+                <img src="https://m.media-amazon.com/images/I/71ZOtNdaZCL._AC_SL1500_.jpg" id="img1">
+                <h3 id="n1">Iphone 13 Pro</h3>
+                <p class="price" id="p1">$1,299.00</p>
+                <button class="btn-buy" onclick="agregar(1)">Añadir al carrito</button>
             </div>
-
             <div class="product-card">
-                <img src="https://www.steren.com.ec/media/catalog/product/cache/0236bbabe616ddcff749ccbc14f38bf2/image/20986abca/audifonos-bluetooth-con-bateria-de-hasta-30-h.jpg" alt="Audífonos">
-                <h3>Sony WH-1000XM5</h3>
-                <p class="price">$249.50</p>
-                <button class="btn-buy" onclick="mostrarMensaje()">Añadir al carrito</button>
+                <img src="https://www.steren.com.ec/media/catalog/product/cache/0236bbabe616ddcff749ccbc14f38bf2/image/20986abca/audifonos-bluetooth-con-bateria-de-hasta-30-h.jpg" id="img2">
+                <h3 id="n2">Sony WH-1000XM5</h3>
+                <p class="price" id="p2">$249.50</p>
+                <button class="btn-buy" onclick="agregar(2)">Añadir al carrito</button>
             </div>
-
             <div class="product-card">
-                <img src="https://images-cdn.ubuy.co.id/633b12488d2edc65997f4c20-smart-watch-bluetooth-smartwatch-touch.jpg" alt="Smartwatch">
-                <h3>Smartwatch Series X Pro</h3>
-                <p class="price">$199.99</p>
-                <button class="btn-buy" onclick="mostrarMensaje()">Añadir al carrito</button>
+                <img src="https://images-cdn.ubuy.co.id/633b12488d2edc65997f4c20-smart-watch-bluetooth-smartwatch-touch.jpg" id="img3">
+                <h3 id="n3">Smartwatch Series X Pro</h3>
+                <p class="price" id="p3">$199.99</p>
+                <button class="btn-buy" onclick="agregar(3)">Añadir al carrito</button>
             </div>
         </div>
     </div>
-
-    <footer>&copy; 2026 AldoShop - Desplegado con Docker & GitHub Actions</footer>
-
     <script>
-        function mostrarMensaje() {
-            alert("✅ Producto añadido correctamente");
+        function agregar(id) {
+            const prod = {
+                nombre: document.getElementById('n'+id).innerText,
+                precio: document.getElementById('p'+id).innerText,
+                imagen: document.getElementById('img'+id).src
+            };
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.push(prod);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            alert("✅ " + prod.nombre + " añadido al carrito");
         }
     </script>
 </body>
